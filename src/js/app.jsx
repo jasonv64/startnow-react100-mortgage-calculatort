@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       balance: 0,
@@ -18,12 +18,12 @@ export default class App extends React.Component {
     let b = this.state.balance;
     let r = this.state.rate * .01 / 12;
     let t = this.state.term;
-    let n = t*12;
+    let n = t * 12;
     let top = Math.pow((1 + r), n) * r;
     let bottom = Math.pow((1 + r), n) - 1;
 
     this.setState({
-      output: (b*(top/bottom)).toFixed(2)
+      output: (b * (top / bottom)).toFixed(2)
     })
   }
 
@@ -41,44 +41,47 @@ export default class App extends React.Component {
     });
   }
 
-  
+
   render() {
-   return(
-     <div className='container'>
-       
-         <h3>Mortgage Calculator</h3>
-         <div className="row1">
-           <div className="input-type" className="col-xs-6 col-md-8">Loan Balance</div>
-           <div className="user-input" className="col-xs-6 col-md-4">
-             <input type="number" name="balance" value={this.state.balance} onChange={this.handleChange} />
-           </div>
-           {/*console.log(this.state.balance + " balance")*/}
-         </div>
-         <div className="row2">
-           <div className="input-type" className="col-xs-6 col-md-8">Intrest Rate (%)</div>
-           <div className="user-input" className="col-xs-6 col-md-4">
-             <input type="number" name="rate" step="0.01" value={this.state.rate} onChange={this.handleChange} />
-           </div>
-          {/*console.log(this.state.rate + " rate")*/}
-         </div>
-         <div className="row3">
-           <div className="input-type" className="col-xs-6 col-md-8">Loan Term (years)</div>
-           <div className="user-input" className="col-xs-6 col-md-4">
-             <select name="term" value={this.state.term} onChange={this.handleChange}>
-               <option value='15'>15</option>
-               <option value='30'>30</option>
-             </select>
-           </div>
-           {/*console.log(this.state.term + " term")*/}
-         </div>
-         <button className="submit" type="click" value="Click" name="submit"
-           onClick={this.calculate}
-         >Calculate</button>
-         <div id="output" className="output">
-           ${this.state.output} is your payment.
-          {/*console.log(this.state.output + " output")*/}           
-            </div>       
-     </div>
-   );
+    return (
+      <div className='container'>
+        <h3>Mortgage Calculator</h3>
+
+        <div className="row1">
+          <div className="input-type" className="col-xs-6 col-md-8">Loan Balance</div>
+          <div className="user-input" className="col-xs-6 col-md-4">
+            <input type="number" name="balance" value={this.state.balance} onChange={this.handleChange} />
+          </div>
+        </div>
+
+        <div className="row2">
+          <div className="input-type" className="col-xs-6 col-md-8">Intrest Rate (%)</div>
+          <div className="user-input" className="col-xs-6 col-md-4">
+            <input type="number" name="rate" step="0.01" value={this.state.rate} onChange={this.handleChange} />
+          </div>
+        </div>
+
+        <div className="row3">
+          <div className="input-type" className="col-xs-6 col-md-8">Loan Term (years)
+          <div>
+            <select name="term" value={this.state.term} onChange={this.handleChange}>
+              <option value='15'>15</option>
+              <option value='30'>30</option>
+            </select>
+            </div>
+          </div>
+          <div className="user-input" className="col-xs-6 col-md-4">
+            <button className="submit" type="click" value="Click" name="submit"
+              onClick={this.calculate}
+            >Calculate</button>
+          </div>
+        </div>
+
+        <div className="output row4">
+          ${this.state.output} is your payment.
+        </div>
+
+      </div>
+    );
   }
 }
