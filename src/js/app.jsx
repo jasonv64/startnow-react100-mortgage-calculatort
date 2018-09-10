@@ -78,7 +78,7 @@ export default class App extends React.Component {
         </div>
 
         <div className="output row4">
-          ${this.state.output} is your payment.
+          ${this.state.output} is your monthly payment.
         </div>
 
       </div>
